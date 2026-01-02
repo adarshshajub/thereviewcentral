@@ -1,0 +1,14 @@
+{% extends "adminpanel/base.html" %}
+{% block content %}
+<h2>Articles</h2>
+
+<table>
+<tr><th>Title</th><th>Published</th></tr>
+{% for a in articles %}
+<tr>
+    <td>{{ a.title }}</td>
+    <td>{{ a.published }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

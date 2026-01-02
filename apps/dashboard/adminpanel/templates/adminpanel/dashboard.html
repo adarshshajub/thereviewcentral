@@ -1,0 +1,14 @@
+{% extends "adminpanel/base.html" %}
+
+{% block content %}
+<br>
+<h2>Admin Dashboard</h2>
+<br>
+<div class="cards">
+    <div class="card">Users<br><strong>{{ users }}</strong></div>
+    <div class="card">Products<br><strong>{{ products }}</strong></div>
+    <div class="card">Reviews<br><strong>{{ reviews }}</strong></div>
+    <div class="card">Articles<br><strong>{{ articles }}</strong></div>
+    <div class="card">Clicks<br><strong>{{ clicks }}</strong></div>
+</div>
+{% endblock %}

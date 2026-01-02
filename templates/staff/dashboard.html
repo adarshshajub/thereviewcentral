@@ -1,0 +1,23 @@
+{% extends "base_dashboard.html" %}
+
+{% block title %}Staff Dashboard{% endblock %}
+
+{% block sidebar %}
+<a href="/staff/">Dashboard</a><br>
+<a href="/staff/reviews/">My Reviews</a><br>
+<a href="/staff/articles/">My Articles</a><br>
+{% endblock %}
+
+{% block content %}
+<h2>My Content</h2>
+
+<h3>Reviews</h3>
+{% for r in reviews %}
+<p>{{ r.title }}</p>
+{% empty %}<p>No reviews</p>{% endfor %}
+
+<h3>Articles</h3>
+{% for a in articles %}
+<p>{{ a.title }}</p>
+{% empty %}<p>No articles</p>{% endfor %}
+{% endblock %}

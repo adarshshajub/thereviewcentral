@@ -1,0 +1,14 @@
+{% extends "adminpanel/base.html" %}
+{% block content %}
+<h2>Affiliate Clicks</h2>
+
+<table>
+<tr><th>Product</th><th>Time</th></tr>
+{% for c in clicks %}
+<tr>
+    <td>{{ c.product }}</td>
+    <td>{{ c.clicked_at }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

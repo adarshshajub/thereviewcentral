@@ -1,0 +1,15 @@
+{% extends "adminpanel/base.html" %}
+{% block content %}
+<h2>Users</h2>
+
+<table>
+<tr><th>Username</th><th>Staff</th><th>Admin</th></tr>
+{% for u in users %}
+<tr>
+    <td>{{ u.username }}</td>
+    <td>{{ u.is_staff }}</td>
+    <td>{{ u.is_superuser }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "adminpanel/base.html" %}
+{% block content %}
+<h2>Products</h2>
+
+<a href="{% url 'adminpanel:admin_product_add'%}"
+   style="padding:8px 12px;background:#28a745;color:white;text-decoration:none;">
+   ➕ Add Product
+</a>
+
+<br><br>
+
+<table>
+<tr>
+    <th>Name</th>
+    <th>Slug</th>
+    <th>Actions</th>
+</tr>
+
+{% for p in products %}
+<tr>
+    <td>{{ p.title }}</td>
+    <td>{{ p.slug }}</td>
+    <td>
+        <a href="{% url 'adminpanel:admin_product_edit' p.id %}">✏️ Edit</a> |
+        <a href="{% url 'adminpanel:admin_product_delete' p.id %}"
+           style="color:red;">🗑️ Delete</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

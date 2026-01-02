@@ -22,5 +22,7 @@ urlpatterns = [
     path("", include("apps.core.urls")),
     path("reviews/", include("apps.reviews.urls")),
     path("affiliates/", include("apps.affiliates.urls")),
-    path("articles/", include("apps.articles.urls")),
+    path("accounts/", include("apps.accounts.urls")),
+    path("staff/", include("apps.dashboard.staff.urls")),
+    path("admin-panel/", include("apps.dashboard.adminpanel.urls")),
 ]

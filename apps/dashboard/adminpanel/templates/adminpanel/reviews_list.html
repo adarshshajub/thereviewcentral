@@ -1,0 +1,15 @@
+{% extends "adminpanel/base.html" %}
+{% block content %}
+<h2>Reviews</h2>
+
+<table>
+<tr><th>Title</th><th>Author</th><th>Published</th></tr>
+{% for r in reviews %}
+<tr>
+    <td>{{ r.title }}</td>
+    <td>{{ r.author }}</td>
+    <td>{{ r.published }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "adminpanel/base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="d-flex justify-content-center">
+        <div class="card-compact p-4" style="max-width: 800px; width: 80%;">
+            <div class="text-center mb-4">
+                <h2>{{ action }} Product</h2>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <div class="row g-2">
+                    <div class="col-md-12">
+                        <label class="form-label">
+                            Name <span style="color: rgb(191, 12, 12);">*</span>
+                        </label>
+                        {{ form.title }}
+                        {% if form.title.errors %}<div class="text-danger small mt-1">{{ form.title.errors }}</div>{% endif %}
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">
+                            Description <span style="color: rgb(191, 12, 12);">*</span>
+                        </label>
+                        {{ form.description }}
+                        {% if form.description.errors %}<div class="text-danger small mt-1">{{ form.description.errors }}</div>{% endif %}
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">
+                            Slug <span style="color: rgb(191, 12, 12);">*</span>
+                        </label>
+                        {{ form.slug }}
+                        {% if form.slug.errors %}<div class="text-danger small mt-1">{{ form.slug.errors }}</div>{% endif %}
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">
+                            Affiliate Link <span style="color: rgb(191, 12, 12);">*</span>
+                        </label>
+                        {{ form.affiliate_url }}
+                        {% if form.affiliate_url.errors %}<div class="text-danger small mt-1">{{ form.affiliate_url.errors }}</div>{% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            Brand <span style="color: rgb(191, 12, 12);">*</span>
+                        </label>
+                        {{ form.brand }}
+                        {% if form.brand.errors %}<div class="text-danger small mt-1">{{ form.brand.errors }}</div>{% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            Category <span style="color: rgb(191, 12, 12);">*</span>
+                        </label>
+                        {{ form.category }}
+                        {% if form.category.errors %}<div class="text-danger small mt-1" >{{ form.category.errors }}</div>{% endif %}
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">
+                            Image <span style="color: rgb(191, 12, 12);">*</span>
+                        </label>
+                        {{ form.image }}
+                        {% if form.image.errors %}<div class="text-danger small mt-1">{{ form.image.errors }}</div>{% endif %}
+                    </div>
+                </div>
+                <br>
+                <div class="d-flex gap-2" >
+                <button class="btn btn-primary flex-fill type="submit"
+                        style="padding:8px 15px;
+                               background:#007bff;
+                               color:white;
+                               border:none">{{ action }}</button>
+                <a class="btn btn-outline-secondary flex-fill" href="{% url 'adminpanel:admin_products' %}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const titleInput = document.getElementById("id_title");
+    const slugInput = document.getElementById("id_slug");
+
+    if (!titleInput || !slugInput) return;
+
+    let slugManuallyEdited = false;
+
+    // Detect manual slug edit
+    slugInput.addEventListener("input", function () {
+        slugManuallyEdited = true;
+    });
+
+    // Auto-generate slug from title
+    titleInput.addEventListener("input", function () {
+        if (slugManuallyEdited) return;
+
+        slugInput.value = titleInput.value
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)/g, "");
+    });
+});
+    </script>
+{% endblock %}

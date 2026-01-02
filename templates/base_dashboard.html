@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Dashboard{% endblock %}</title>
+</head>
+<body>
+
+<div style="display:flex">
+
+    <aside style="width:200px;background:#eee;padding:10px">
+        <h3>Dashboard</h3>
+        {% block sidebar %}{% endblock %}
+    </aside>
+
+    <main style="padding:20px;width:100%">
+        {% block content %}{% endblock %}
+    </main>
+
+</div>
+
+</body>
+</html>
