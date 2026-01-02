@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Latest Reviews</h2>
+
+{% for review in reviews %}
+    <p>
+        <a href="/review/{{ review.slug }}/">
+            {{ review.title }}
+        </a>
+        – ⭐ {{ review.rating }}/5
+    </p>
+{% endfor %}
+
+{% endblock %}

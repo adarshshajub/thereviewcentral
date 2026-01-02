@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ article.title }}</h1>
+
+<p>{{ article.intro }}</p>
+
+<hr>
+
+{% for item in products %}
+    <h2>#{{ item.rank }} – {{ item.product.title }}</h2>
+
+    <p>{{ item.short_note }}</p>
+
+    <a href="/go/{{ item.product.slug }}/"
+       style="display:inline-block;padding:8px 12px;background:#28a745;color:white;">
+       Buy Now
+    </a>
+
+    <hr>
+{% endfor %}
+
+{{ article.content|safe }}
+
+{% endblock %}

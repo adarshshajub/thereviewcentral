@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}{{ review.title }}{% endblock %}
+
+{% block seo_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "author": {
+    "@type": "Person",
+    "name": "{{ review.author.username }}"
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "{{ review.rating }}",
+    "bestRating": "5"
+  },
+  "itemReviewed": {
+    "@type": "Product",
+    "name": "{{ review.product.title }}"
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>{{ review.title }}</h1>
+<p>Rating: {{ review.rating }}/5</p>
+
+<p><strong>Disclosure:</strong> Affiliate links may be used.</p>
+
+<a href="/go/{{ review.product.slug }}/">Buy Now</a>
+
+<h3>Pros</h3>{{ review.pros|linebreaks }}
+
+<h3>Cons</h3>{{ review.cons|linebreaks }}
+
+{{ review.content|safe }}
+
+<h3>Final Verdict</h3>
+{{ review.verdict }}
+
+{% endblock %}

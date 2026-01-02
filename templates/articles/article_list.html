@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Buying Guides | TheReviewCentral{% endblock %}
+
+{% block content %}
+<h1>Buying Guides</h1>
+
+{% for article in articles %}
+    <p>
+        <a href="/articles/{{ article.slug }}/">
+            {{ article.title }}
+        </a>
+    </p>
+{% empty %}
+    <p>No articles yet.</p>
+{% endfor %}
+{% endblock %}

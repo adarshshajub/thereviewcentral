@@ -1,0 +1,1 @@
+python .\manage.py startapp articles apps/articles
